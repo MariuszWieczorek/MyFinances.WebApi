@@ -14,13 +14,6 @@ namespace MyFinances.WebApi.Models.Response
         public List<Error> Errors { get; set; }
 
         public bool isSuccess => Errors == null || !Errors.Any();
-        public bool IsSuccessz
-        {
-            get
-            {
-                return Errors == null || !Errors.Any();   
-            } 
-        }
-
+       
     }
 }

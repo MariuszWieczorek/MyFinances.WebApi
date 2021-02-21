@@ -48,7 +48,7 @@ namespace MyFinances.WebApi.Controllers
 
             try
             {
-                responce.Data = _unitOfWork.Operation.Get(id).ToDto();
+                responce.Data = _unitOfWork.Operation.Get(id)?.ToDto();
             }
             catch (Exception ex)
             {
