@@ -24,7 +24,7 @@ namespace MyFinances.WebApi.Models.Converters
 
         public static IEnumerable<OperationDto> ToDtos(this IEnumerable<Operation> model)
         {
-            if (model != null)
+            if (model == null)
                 return Enumerable.Empty<OperationDto>();
 
             return model.Select(x => x.ToDto());

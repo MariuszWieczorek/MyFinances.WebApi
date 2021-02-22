@@ -60,13 +60,14 @@ namespace MyFinances.WebApi.Controllers
 
 
         [HttpPost]
-        public DataResponse<int> Add(OperationDto operation)
+        public DataResponse<int> Add(OperationDto operationDto  )
         {
             var responce = new DataResponse<int>();
 
             try
             {
-                _unitOfWork.Operation.Add(operation.ToDao());
+                var operation = operationDto.ToDao();
+                _unitOfWork.Operation.Add(operation);
                 _unitOfWork.Complete();
                 // tutaj jest już znane id dodanego rekordu
                 responce.Data = operation.Id;

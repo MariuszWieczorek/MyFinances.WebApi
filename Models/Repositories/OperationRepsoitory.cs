@@ -19,7 +19,7 @@ namespace MyFinances.WebApi.Models.Repositories
 
         public IEnumerable<Operation> Get()
         {
-            return _context.Operations.ToList();
+            return _context.Operations;
         }
 
         // nie chcemy aby był rzucony wyjątek dlatego
