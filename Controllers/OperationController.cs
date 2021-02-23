@@ -41,6 +41,11 @@ namespace MyFinances.WebApi.Controllers
             return responce;
         }
 
+        /// <summary>
+        /// Get Operation by Id
+        /// </summary>
+        /// <param name="id"> Operation Id</param>
+        /// <returns>Single operation</returns>
         [HttpGet("{id}")]
         public DataResponse<OperationDto> Get(int id)
         {
