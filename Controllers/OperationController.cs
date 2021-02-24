@@ -22,11 +22,29 @@ namespace MyFinances.WebApi.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
+        [HttpGet("{recordsPerPage}/{pageNr}")]
+        public DataResponse<IEnumerable<OperationDto>> Get(int recordsPerPage, int pageNr)
+        {
+            var responce = new DataResponse<IEnumerable<OperationDto>>();
+
+            try
+            {
+                responce.Data = _unitOfWork.Operation.Get(recordsPerPage, pageNr).ToDtos();
+            }
+            catch (Exception ex)
+            {
+                // logowanie do pliku ...
+                responce.Errors.Add( new Error(ex.Source,ex.Message));
+            }
+            
+            return responce;
+        }
+
         [HttpGet]
         public DataResponse<IEnumerable<OperationDto>> Get()
         {
@@ -39,9 +57,9 @@ namespace MyFinances.WebApi.Controllers
             catch (Exception ex)
             {
                 // logowanie do pliku ...
-                responce.Errors.Add( new Error(ex.Source,ex.Message));
+                responce.Errors.Add(new Error(ex.Source, ex.Message));
             }
-            
+
             return responce;
         }
 

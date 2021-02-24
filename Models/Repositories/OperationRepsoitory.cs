@@ -15,11 +15,20 @@ namespace MyFinances.WebApi.Models.Repositories
             _context = context;
         }
 
-        
 
         public IEnumerable<Operation> Get()
         {
             return _context.Operations;
+        }
+
+        public IEnumerable<Operation> Get(int recordsPerPage, int pageNr)
+        {
+            if (pageNr <= 0)
+            {
+                pageNr = 1;
+            }
+            int recordToSkip = recordsPerPage * (pageNr - 1);
+            return _context.Operations.Skip(recordToSkip).Take(recordsPerPage);
         }
 
         // nie chcemy aby był rzucony wyjątek dlatego
@@ -41,6 +50,7 @@ namespace MyFinances.WebApi.Models.Repositories
             _context.Operations.Remove(operationToDelete);
         }
 
+     
         public void Update(Operation operation)
         {
             var operationToUpdate = _context.Operations.Single(x => x.Id == operation.Id);
