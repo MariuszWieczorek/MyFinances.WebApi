@@ -23,6 +23,10 @@ namespace MyFinances.WebApi.Controllers
             _unitOfWork = unitOfWork;
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public DataResponse<IEnumerable<OperationDto>> Get()
         {
@@ -79,6 +83,7 @@ namespace MyFinances.WebApi.Controllers
             }
             catch (Exception ex)
             {
+                //todo do wykonania
                 // logowanie do pliku ...
                 responce.Errors.Add(new Error(ex.Source, ex.Message));
             }

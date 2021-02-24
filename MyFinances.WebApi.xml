@@ -4,6 +4,12 @@
         <name>MyFinances.WebApi</name>
     </assembly>
     <members>
+        <member name="M:MyFinances.WebApi.Controllers.OperationController.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:MyFinances.WebApi.Controllers.OperationController.Get(System.Int32)">
             <summary>
             Get Operation by Id
