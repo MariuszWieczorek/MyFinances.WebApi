@@ -27,6 +27,12 @@ namespace MyFinances.WebApi.Models.Repositories
             {
                 pageNr = 1;
             }
+            
+            if (recordsPerPage <= 0)
+            {
+                recordsPerPage = 1;
+            }
+
             int recordToSkip = recordsPerPage * (pageNr - 1);
             return _context.Operations.Skip(recordToSkip).Take(recordsPerPage);
         }
